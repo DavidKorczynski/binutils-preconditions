@@ -70,6 +70,7 @@ int fuzz_preconditions_check(const char *file_name, const char *target) {
   }
 
   if (! bfd_check_format_matches (abfd, bfd_object, &matching)) {
+    free (matching);
     bfd_close(abfd);
     return 0;
   }
@@ -79,4 +80,3 @@ int fuzz_preconditions_check(const char *file_name, const char *target) {
   bfd_close(abfd);
   return retval;
 }
-
